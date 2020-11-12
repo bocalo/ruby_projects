@@ -1,3 +1,7 @@
+# Расписание приема врача
+
+# Создайте класс Patient и класс Doctor. Пусть доктор может принять несколько пациентов, установите расписание того, как доктор будет принимать 16 пациентов в течение 8 часового рабочего дня.
+
 class Doctor
   WORKTIME = 8
   COUNT_OF_PATIENTS = 16
@@ -13,12 +17,13 @@ class Doctor
 
   def make_shedule(patient)
     if patient.is_ill?
-      @shedule[key] = patient
+      @shedule[key] = patient  # ??
     end
   end
 
-  def time_of_reception
-    @shedule.each { |patient, time|  }
+  def time_of_reception(patient, time)
+    time = (WORKTIME / COUNT_OF_PATIENTS) * @grade_of_illness
+    @shedule.each { |patient, time| shedule[patient] = time  }
   end
 end
 
@@ -28,3 +33,5 @@ class Patient
     @age = age
   end
 end
+
+# не соображу, как пациента включить в расписание.

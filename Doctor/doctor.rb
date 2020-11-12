@@ -9,34 +9,35 @@
 # - время работы доктора
 # - свободное время
 
+require_relative 'main'
+require_relative 'patient'
+
 class Doctor
-  WORKTIME = 8
-  COUNT_OF_PATIENTS = 16
+  attr_accessor :name, :starts_at, :ends_at
 
-  def initialize(grade_of_illness, shedule = {})
-    @grade_of_illness = 0
-    @shedule = shedule
-  end
-
-  def is_ill?(patient)
-    @grade_of_illness > 0
-  end
-
-  def make_shedule(patient)
-    if patient.is_ill?
-      @shedule[key] = patient  # ??
-    end
-  end
-
-  def time_of_reception(patient, time)
-    time = (WORKTIME / COUNT_OF_PATIENTS) * @grade_of_illness
-    @shedule.each { |patient, time| shedule[patient] = time  }
-  end
-end
-
-class Patient
-  def initialize(name, age)
+  def initialize(name, starts_at, ends_at)
     @name = name
-    @age = age
+    @starts_at = starts_at
+    @ends_at = ends_at
+    @shedule = Hash.new { |h, k| h[k] = nil }
+    @patients = []
+  end
+
+  def self.shedule(patient, time)
+    @patient.each { |patient| @shedule[time] = patient }
+  end
+
+  def self.patients
+    @patients.each { |patient| patients << patient }
+    @patients
+  end
+
+  def self.free_at?(time)
+    @shedule[time] = 0
+  end
+
+  def self.working_hours
+    [@starts_at..@ends_at]
   end
 end
+

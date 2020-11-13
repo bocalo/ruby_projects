@@ -9,8 +9,7 @@
 # - время работы доктора
 # - свободное время
 
-require_relative 'main'
-require_relative 'patient'
+
 
 class Doctor
   attr_accessor :name, :starts_at, :ends_at
@@ -21,6 +20,10 @@ class Doctor
     @ends_at = ends_at
     @shedule = Hash.new { |h, k| h[k] = nil }
     @patients = []
+  end
+
+  def self.shedule
+    @shedule
   end
 
   def self.shedule(patient, time)
@@ -37,7 +40,8 @@ class Doctor
   end
 
   def self.working_hours
-    [@starts_at..@ends_at]
+    return true if [@starts_at..@ends_at]
+    false
   end
 end
 

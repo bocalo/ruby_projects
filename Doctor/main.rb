@@ -16,7 +16,7 @@ doctor = Doctor.new(name: 'Иван Васильевич', starts_at: 8, ends_at
 doctor.schedule
 # => { 8 => nil, 9 => nil, 10 => nil }
 patient1 = Patient.new(name: 'Петька')
-doctor.schedule(patient1, 8)
+doctor.add_patient(patient1, 8)
 # => { 8 => patient1, 9 => nil, 10 => nil }
 patient2 = Patient.new(name: 'Васька')
 doctor.schedule(patient2, 8)

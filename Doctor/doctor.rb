@@ -8,40 +8,61 @@
 # - время перерыва у доктора
 # - время работы доктора
 # - свободное время
-
-
+require_relative "patient"
 
 class Doctor
-  attr_accessor :name, :starts_at, :ends_at
+  attr_reader :name, :starts_at, :ends_at, :schedule
 
-  def initialize(name, starts_at, ends_at)
+  def initialize(name:, starts_at:, ends_at:)
     @name = name
     @starts_at = starts_at
     @ends_at = ends_at
-    @shedule = Hash.new { |h, k| h[k] = nil }
+    @schedule = {}
     @patients = []
   end
 
-  def self.shedule
-    @shedule
-  end
+ # Params:
+  # - time: Integer,
+  # - patient: String
+  # 
+  # Returns: Array of patients
 
-  def self.shedule(patient, time)
-    @patient.each { |patient| @shedule[time] = patient }
-  end
-
-  def self.patients
-    @patients.each { |patient| patients << patient }
+  def add_patient(patient, time)
+    if self.free_at?(time)
+      @patients << patient
+    end
     @patients
   end
 
-  def self.free_at?(time)
-    @shedule[time] = 0
-  end
+  # Params:
+  # 
+  # - patient: String
+  # 
+  # Returns: Array of patients
 
-  def self.working_hours
-    return true if [@starts_at..@ends_at]
+  def patients
+    @patients.each { |patient| puts patient }
+    @patients
+  end
+# Params:
+  # - time: Integer
+  # 
+  # Returns: Boolean
+
+  def free_at?(patient, time)
+    @schedule = Hash.new { |h, k| h[k] = [] }
+    @schedule[time] << patient
+    return true if @schedule[time] == nil
     false
   end
-end
 
+  # Params:
+  # - starts_at: Integer,
+  # - ends_at: Integer
+  # 
+  # Returns: Array[integers]
+
+  def working_hours
+   (@starts_at..@ends_at).to_a
+  end
+end

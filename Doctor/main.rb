@@ -9,6 +9,7 @@
 # - время работы доктора
 # - свободное время
 
+# TODO: remove later
 require_relative "doctor"
 require_relative "patient"
 

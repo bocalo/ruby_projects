@@ -8,6 +8,8 @@
 # - время перерыва у доктора
 # - время работы доктора
 # - свободное время
+
+# TODO: remove later
 require_relative "patient"
 
 class Doctor

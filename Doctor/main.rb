@@ -9,23 +9,23 @@
 # - время работы доктора
 # - свободное время
 
-require_relative 'doctor'
-require_relative 'patient'
+require_relative "doctor"
+require_relative "patient"
 
-doctor = Doctor.new(name: 'Иван Васильевич', starts_at: 8, ends_at: 16)
+doctor = Doctor.new(name: "Иван Васильевич", starts_at: 8, ends_at: 16)
 doctor.schedule
 # => { 8 => nil, 9 => nil, 10 => nil }
-patient1 = Patient.new(name: 'Петька')
+patient1 = Patient.new(name: "Петька")
 doctor.add_patient(patient1, 8)
 # => { 8 => patient1, 9 => nil, 10 => nil }
-patient2 = Patient.new(name: 'Васька')
-doctor.schedule(patient2, 8)
+patient2 = Patient.new(name: "Васька")
+doctor.add_patient(patient2, 8)
 # => !!!
-doctor.schedule(patient2, 9)
+doctor.add_patient(patient2, 9)
 # => { 8 => patient1, 9 => patient2, 10 => nil }
 doctor.patients
 # => [patient1, patient2]
-doctor.schedule(patient1, 10)
+doctor.add_patient(patient1, 10)
 # => { 8 => patient1, 9 => patient2, 10 => patient1 }
 doctor.patients
 # => [patient1, patient2]

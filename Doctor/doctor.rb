@@ -21,37 +21,39 @@ class Doctor
     @patients = []
   end
 
- # Params:
+  # Params:
   # - time: Integer,
   # - patient: String
-  # 
+  #
   # Returns: Array of patients
 
   def add_patient(patient, time)
     if self.free_at?(time)
-      @patients << patient
+      @patients.each { |patient| @schedule[time] = patient }
+      @patients
     end
-    @patients
   end
 
   # Params:
-  # 
+  #
   # - patient: String
-  # 
+  #
   # Returns: Array of patients
 
   def patients
     @patients.each { |patient| puts patient }
     @patients
   end
-# Params:
+
+  # Params:
   # - time: Integer
-  # 
+  #
   # Returns: Boolean
 
-  def free_at?(patient, time)
+  def free_at?(time)
     @schedule = Hash.new { |h, k| h[k] = [] }
-    @schedule[time] << patient
+    @patients.each { |patient| @schedule[time] << patient }
+
     return true if @schedule[time] == nil
     false
   end
@@ -59,10 +61,10 @@ class Doctor
   # Params:
   # - starts_at: Integer,
   # - ends_at: Integer
-  # 
+  #
   # Returns: Array[integers]
 
   def working_hours
-   (@starts_at..@ends_at).to_a
+    (@starts_at..@ends_at).to_a
   end
 end

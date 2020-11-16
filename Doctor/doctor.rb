@@ -23,12 +23,15 @@ class Doctor
 
   # Params:
   # - time: Integer,
+  # TODO: patient - это не String
   # - patient: String
   #
   # Returns: Array of patients
 
   def add_patient(patient, time)
+    # TODO: что на самом деле может возвращать этот метод?
     if self.free_at?(time)
+      # TODO: объясните словами, что делает этот метод
       @patients.each { |patient| @schedule[time] = patient }
       @patients
     end
@@ -37,10 +40,12 @@ class Doctor
   # Params:
   #
   # - patient: String
-  #
+  # TODO: вместо "Array of patients" мы пишем [Patient]
   # Returns: Array of patients
+  # TODO: не оставляйте пробелы между комментарием и методом
 
   def patients
+    # TODO: discuss
     @patients.each { |patient| puts patient }
     @patients
   end
@@ -51,7 +56,12 @@ class Doctor
   # Returns: Boolean
 
   def free_at?(time)
+    # TODO: откуда вы взяли такую конструкцию?
+    # Попробуйте объяснить, что она делает:
+    # Hash.new { |h, k| h[k] = [] }
     @schedule = Hash.new { |h, k| h[k] = [] }
+
+    # TODO: что делает данная конструкция?
     @patients.each { |patient| @schedule[time] << patient }
 
     return true if @schedule[time] == nil
@@ -61,10 +71,11 @@ class Doctor
   # Params:
   # - starts_at: Integer,
   # - ends_at: Integer
-  #
+  # TODO: типа "integers" не существует
   # Returns: Array[integers]
 
   def working_hours
+    # TODO: вы можете использовать геттеры (attr readers) вместо переменных объекта (instance variables)
     (@starts_at..@ends_at).to_a
   end
 end

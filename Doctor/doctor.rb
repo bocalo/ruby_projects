@@ -20,34 +20,36 @@ class Doctor
     @schedule = {}
     @patients = []
   end
+
   # Params:
   # - time: Integer,
+  # TODO: patient - это не String
   # - patient: String
   #
   # Returns: [Patients]
   def add_patient(patient, time)
     # Этот метод возвращает хеш { time => patient , time => patient }
     if self.free_at?(time)
-      # если у доктора есть свободное время, 
+      # если у доктора есть свободное время,
       # то в массив пациентов добавляются пациенты, каждому пациенту соответствует его время в хеше
       @patients.each { |patient| @schedule[time] = patient }
       @patients << Patient.new(name)
     end
   end
+
   # Params:
   #
   # - patient: String
-  #
-  # Returns: [Patients]
   def patients
+    # TODO: discuss
     @patients.each { |patient| puts patient }
     @patients
   end
+
   # Params:
   # - time: Integer
   #
   # Returns: Boolean
-
   def free_at?(time)
     # Здесь я пытался задать массив в хеше
     @schedule = Hash.new { |h, k| h[k] = [] }
@@ -59,15 +61,13 @@ class Doctor
   end
 
   # Params:
-  # - starts_at: Integer,
-  # - ends_at: Integer
-  #
+  # - starts_at: Array[integers],
+  # - ends_at: Array[integers]
   # Returns: Array[integers]
-
   def working_hours
     (@starts_at..@ends_at).to_a
     # TODO: вы можете использовать геттеры (attr readers) вместо переменных объекта (instance variables)
-    # вот так
+    # вот так?
     (starts_at..ends_at).to_a
   end
 end

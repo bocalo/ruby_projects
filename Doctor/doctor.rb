@@ -23,17 +23,13 @@ class Doctor
 
   # Params:
   # - time: Integer,
-  # TODO: patient - это не String
-  # - patient: String
+  # - patient: Patients
   #
-  # Returns: [Patients]
+  # Returns: Hash<Integer => Patient> | nil
   def add_patient(patient, time)
-    # Этот метод возвращает хеш { time => patient , time => patient }
-    if self.free_at?(time)
-      # если у доктора есть свободное время,
-      # то в массив пациентов добавляются пациенты, каждому пациенту соответствует его время в хеше
-      @patients.each { |patient| @schedule[time] = patient }
-      @patients << Patient.new(name)
+    if free_at?(time)
+      @schedule[time] = patient
+      @patients << patient
     end
   end
 

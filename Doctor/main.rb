@@ -20,7 +20,7 @@ doctor.add_patient(patient1, 8)
 # => { 8 => patient1, 9 => nil, 10 => nil }
 patient2 = Patient.new(name: "Васька")
 doctor.add_patient(patient2, 8)
-# => !!!
+# => nil
 doctor.add_patient(patient2, 9)
 # => { 8 => patient1, 9 => patient2, 10 => nil }
 doctor.patients

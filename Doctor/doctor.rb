@@ -26,18 +26,18 @@ class Doctor
   #
   # Returns: Hash<Integer => Patient> | nil
   def add_patient(patient, time)
-    if free_at?(time)
+    #if free_at?(time)
       @schedule[time] = patient
       @patients << patient
-    end
-    nil
+    #end
+    #nil
   end
   # Params:
   #
   # - patient: String
   def patients
-    # TODO: discuss
-    #@patients.each { |patient| puts patient }
+    #TODO: discuss
+    @patients.each { |patient| puts patient }
     @patients
   end
   # Params:
@@ -45,13 +45,20 @@ class Doctor
   #
   # Returns: Boolean
   def free_at?(time)
-    @patients.each do |patient|
-      if @schedule[time] = patient
-        return false
-      end
+    if schedule.has_key?(time) && schedule[time] != nil
+      return false
+    else
       true
     end
-    
+  end
+  # def free_at?(time)
+  #   @patients.each do |patient|
+  #     if @schedule[time] = patient
+  #       return false
+  #     end
+  #     true
+  #   end
+  # end
     # Здесь я пытался задать массив в хеше
     #@schedule = Hash.new { |h, k| h[k] = [] }
     # Здесь я хотел, чтобы каждый пациент добавлялся в расписание
@@ -59,7 +66,7 @@ class Doctor
     # если пациента нет в расписании, значит доктор свободен
     #return true if @schedule[time] == nil
     #false
-  end
+  
   # Params:
   # - starts_at: Array[integers],
   # - ends_at: Array[integers]

@@ -11,70 +11,28 @@
 require_relative "patient"
 
 class Doctor
-  attr_reader :name, :starts_at, :ends_at, :schedule
+  attr_reader :name, :starts_at, :ends_at, :schedule, :patients
+  
 
   def initialize(name:, starts_at:, ends_at:)
     @name = name
     @starts_at = starts_at
     @ends_at = ends_at
-    @schedule = {}
-    @patients = []
+    @schedule = Hash.new
   end
-  # Params:
-  # - time: Integer,
-  # - patient: Patients
-  #
-  # Returns: Hash<Integer => Patient> | nil
+
+  
   def add_patient(patient, time)
-    #if free_at?(time)
-      @schedule[time] = patient
-      @patients << patient
-    #end
-    #nil
-  end
-  # Params:
-  #
-  # - patient: String
-  def patients
-    #TODO: discuss
-    @patients.each { |patient| puts patient }
-    @patients
-  end
-  # Params:
-  # - time: Integer
-  #
-  # Returns: Boolean
-  def free_at?(time)
-    if schedule.has_key?(time) && schedule[time] != nil
-      return false
-    else
-      true
+    if free_at?(time)
+      @schedule.values.compact.uniq << patient
     end
   end
-  # def free_at?(time)
-  #   @patients.each do |patient|
-  #     if @schedule[time] = patient
-  #       return false
-  #     end
-  #     true
-  #   end
-  # end
-    # Здесь я пытался задать массив в хеше
-    #@schedule = Hash.new { |h, k| h[k] = [] }
-    # Здесь я хотел, чтобы каждый пациент добавлялся в расписание
-    #@patients.each { |patient| @schedule[time] << patient }
-    # если пациента нет в расписании, значит доктор свободен
-    #return true if @schedule[time] == nil
-    #false
+
+  def free_at?(time)
+   working_hours && schedule[time].nil? 
+  end
   
-  # Params:
-  # - starts_at: Array[integers],
-  # - ends_at: Array[integers]
-  # Returns: Array[integers]
   def working_hours
-    #(@starts_at..@ends_at).to_a
-    # TODO: вы можете использовать геттеры (attr readers) вместо переменных объекта (instance variables)
-    # вот так?
     (starts_at..ends_at).to_a
   end
 end

@@ -11,27 +11,27 @@
 require_relative "patient"
 
 class Doctor
-  attr_reader :name, :starts_at, :ends_at, :schedule, :patients
-  
+  attr_reader :name, :starts_at, :ends_at, :schedule
 
   def initialize(name:, starts_at:, ends_at:)
     @name = name
     @starts_at = starts_at
     @ends_at = ends_at
-    @schedule = Hash.new
+    @schedule = working_hours.to_h { |t| [t, nil] }
   end
 
-  
   def add_patient(patient, time)
-    if free_at?(time)
-      @schedule.values.compact.uniq << patient
-    end
+    schedule[time] = patient if free_at?(time)
+  end
+
+  def patients
+    schedule.values.compact.uniq
   end
 
   def free_at?(time)
-   working_hours && schedule[time].nil? 
+    working_hours.include?(time) && schedule[time].nil?
   end
-  
+
   def working_hours
     (starts_at..ends_at).to_a
   end

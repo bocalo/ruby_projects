@@ -1,5 +1,4 @@
-# Первое задание
-
+# # Первое задание
 arg = ARGV[0]
 
 if arg == "Titanic"
@@ -10,15 +9,21 @@ else
   puts "Haven't seen something yet"
 end
 
-# Второе задание
-arr = ARGV
-#puts arr.to_s
+# # Второе задание
+ arg = ARGV[0]
+# #puts arr.to_s
 
-arr.each do |word|
-  if arr.include?(word)
+fav_movies = ["Titanic", "Matrix", "Fargo"]
+
+for arg in ARGV
+  if fav_movies.include?(arg)
     puts "This is a good movie"
   else
     puts "So so"
   end
-  arr
 end
+
+
+
+
+

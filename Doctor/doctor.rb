@@ -36,3 +36,5 @@ class Doctor
     (starts_at..ends_at).to_a
   end
 end
+
+

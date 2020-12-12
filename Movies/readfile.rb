@@ -16,11 +16,11 @@ line.each do |el|
   end
   movies.each do |f|
     puts "This movie #{f[:title]} has raiting #{f[:raiting]}"
-    # rate = f[:rating]
-    # acc = ((rate - 8) * 10).to_s
-    # stars = acc.times * "*"
-    # rate = f[:stars]
-    # puts "This movie #{f[:title]} has raiting #{f[:stars]}"
+    rate = f[:rating].to_f
+    acc = ((rate - 8) * 10)
+    stars = acc.times * "*"
+    rate = f[:stars]
+    puts "This movie #{f[:title]} has raiting #{f[:stars]}"
   end
 
   movies

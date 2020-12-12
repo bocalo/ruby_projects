@@ -12,15 +12,15 @@ line = file.split("\n")
 line.each do |el|
   movie = el.split("|")
   if movie[1].include?("Max")
-    movies.push({ title: movie[1], raiting: movie[7] })
+    movies.push({ title: movie[1], rating: movie[7] })
   end
   movies.each do |f|
-    puts "This movie #{f[:title]} has raiting #{f[:raiting]}"
-    rate = f[:rating].to_f
-    acc = ((rate - 8) * 10)
-    stars = acc.times * "*"
-    rate = f[:stars]
-    puts "This movie #{f[:title]} has raiting #{f[:stars]}"
+    puts "This movie #{f[:title]} has rating #{f[:rating]}"
+    rating = f[:rating].to_f
+    acc = ((rating - 8.to_i) * 10).round(1)
+    stars = "*" * acc
+    f[:rating] = stars
+    puts "This movie #{f[:title]} has rating #{f[:rating]}"
   end
 
   movies

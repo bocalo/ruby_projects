@@ -5,6 +5,13 @@
 # puts txt
 
 file = ARGV[0]
+default_file = "movies.txt"
+if file == nil
+  file = default_file
+end
+
+#p default_file
+
 # p file
 # current_path = File.dirname(__FILE__)
 # p current_path

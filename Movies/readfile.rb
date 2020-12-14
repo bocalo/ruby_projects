@@ -4,9 +4,12 @@
 # txt = myFile.read()
 # puts txt
 
-
-current_path = File.dirname(__FILE__)
-file_path = current_path + "/movies.txt"
+file = ARGV[0]
+# p file
+# current_path = File.dirname(__FILE__)
+# p current_path
+#file_path = current_path + "/movies.txt"
+file_path = file
 
 if File.exist?(file_path)
   f = File.new(file_path, "r")

@@ -1,14 +1,15 @@
 
-if (ARGV[0] == nil)
-  abort "Put any argument!"
-end
+# if (ARGV[0] == nil)
+#   abort "Put any argument!"
+# end
 
-File.open(ARGV[0]).each do |line|
-  puts line
-end
+# File.open(ARGV[0]).each do |line|
+#   puts line
+# end
+file = ARGV[0]
 
 current_path = File.dirname(__FILE__)
-file_path = current_path 
+file_path = current_path + file
 
 
 if File.exist?(file_path)

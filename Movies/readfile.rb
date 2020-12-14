@@ -49,11 +49,11 @@ end
 #   movie = line.split("|")
 #   title = movie[1]
 #   rating = movie[7]
-#   acc = ((rating - 8.to_i) * 10).round()
+#   acc = ((rating.to_f - 8.to_i) * 10).round()
 #   stars = "*" * acc
 #   rating = stars
 #   if movie[1].include?("Max")
-#     puts "This movie has name #{name} has rating #{rating}"
+#     puts "This movie has name #{title} has rating #{rating}"
 #   end
 # end
 
@@ -68,12 +68,12 @@ end
 
 # lines.each do |line|
 #   movie = line.split("|")
-#   title, rating = movie.value_at(1, 7)
-#   acc = ((rating - 8.to_i) * 10).round()
+#   title, rating = movie.values_at(1, 7)
+#   acc = ((rating.to_f - 8.to_i) * 10).round()
 #   stars = "*" * acc
 #   rating = stars
 #   if movie[1].include?("Max")
-#     puts "This movie has name #{name} has rating #{rating}"
+#     puts "This movie has name #{title} has rating #{rating}"
 #   end
 # end
 

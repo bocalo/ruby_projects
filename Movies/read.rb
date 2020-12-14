@@ -1,6 +1,30 @@
+
+if (ARGV[0] == nil)
+  abort "Put any argument!"
+end
+
+File.open(ARGV[0]).each do |line|
+  puts line
+end
+
+current_path = File.dirname(__FILE__)
+file_path = current_path 
+
+
+if File.exist?(file_path)
+  f = File.new(file_path, "r")
+  lines = f.readlines
+  f.close
+  puts lines
+else
+  puts "File not found!"
+end
+
+file = File.read(file_path)
+
 movies = []
 
-file = File.read("movies.txt")
+file = File.read(file_path)
 lines = file.split("\n")
 lines.each do |line|
   arr = line.split('|')

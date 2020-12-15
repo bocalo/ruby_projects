@@ -1,21 +1,14 @@
-# file = ARGV(0)
-# puts "Opening file:#{file}"
-# myFile = File.open(file)
-# txt = myFile.read()
-# puts txt
 
-file = ARGV[0]
-default_file = "movies.txt"
-if file == nil
-  file = default_file
-end
-
-#p default_file
-
-# p file
+# file = ARGV[0]
+# default_file = "movies.txt"
+# if file == nil
+#   file = default_file
+#end
 # current_path = File.dirname(__FILE__)
-# p current_path
 #file_path = current_path + "/movies.txt"
+
+file = ARGV[0] || 'movies.txt'
+
 file_path = file
 
 if File.exist?(file_path)
@@ -86,4 +79,3 @@ end
 #     puts "This movie has name #{title} has rating #{rating}"
 #   end
 # end
-

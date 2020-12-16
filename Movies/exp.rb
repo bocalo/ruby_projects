@@ -10,11 +10,22 @@ movies = lines.map { |line| movie = line.split("|")
 comedy = movies.map { |el| el[:genre] if el[:genre].include?("Comedy") }.compact
 
 output = movies.map { |el| el[:output] }.take(10)
-#long = movies.map { |el| el[:duration.to_s]}.to_i.sort.reverse.take(5)
 
-director = movies.map { |el| el[:director] }.uniq.sort.take(5)
+long = movies.map { |el| el[:duration].to_i }.sort.reverse.take(5)
 
-total = movies.map { |el| el[:country] != "USA" }.count
+director = movies.map { |el| el[:director].split(' ').reverse.join(' ') }.uniq.sort
+p director
+
+
+# director = movies.map do |el|
+#   jefe = el[:director].split(' ')
+#   p jefe.last.sort
+# end
+# p director
+
+
+total = movies.map { |el| el[:country] unless el[:country].include?("USA") }.compact.count
+
 
 #output = movies.map { |el| puts "#{el[:title]}: #{(el[:output])}; #{el[:genre]} - #{el[:duration]} and director: #{el[:director]}" }.take(5)
 

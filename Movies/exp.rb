@@ -9,26 +9,27 @@ movies = lines.map { |line| movie = line.split("|")
 
 comedy = movies.map { |el| el[:genre] if el[:genre].include?("Comedy") }.compact
 
-#output = movies.map { |el| puts "#{el[:title]}: #{(el[:output])}; #{el[:genre]} - #{el[:duration]} and director: #{el[:director]}" }.take(5)
-
-#p output
-
-long = movies.map { |el| el[:duration]}.sort.reverse.take(5)
+output = movies.map { |el| el[:output] }.take(10)
+#long = movies.map { |el| el[:duration.to_s]}.to_i.sort.reverse.take(5)
 
 director = movies.map { |el| el[:director] }.uniq.sort.take(5)
-#p director
 
 total = movies.map { |el| el[:country] != "USA" }.count
 
+#output = movies.map { |el| puts "#{el[:title]}: #{(el[:output])}; #{el[:genre]} - #{el[:duration]} and director: #{el[:director]}" }.take(5)
+
+#output = movies.map { |el| puts "#{el[:title]}: #{el[:output]}; #{el[:comedy]}" }
 
 
-def print_info(movies)
-  movies.each { |el| el[:title] }
-end
+# def print_info(movies)
+#   movies.each { |el| el[:title] }
+# end
 
-print_info([{title: movie[1], country: movie[3], output: movie[4], genre: movie[5], duration: movie[6], director: movie[8]}])
+# print_info([{title: movie[1], country: movie[3], output: movie[4], genre: movie[5], duration: movie[6], director: movie[8]}])
 
 
+# some = comedy.map { |el| el.upcase }
+# p some
 
 
 

@@ -13,80 +13,36 @@ output = movies.map { |el| el[:output] }.take(10)
 
 long = movies.map { |el| el[:duration].to_i }.sort.reverse.take(5)
 
-director = movies.map { |el| el[:director].split(' ').reverse.join(' ') }.uniq.sort
-p director
-
-
-# director = movies.map do |el|
-#   jefe = el[:director].split(' ')
-#   p jefe.last.sort
-# end
-# p director
-
+director = movies.map.sort_by { |el| el[:director].split(' ').last }.uniq
+director = movies.map { |el| el[:director] }.uniq
+arr = director.sort_by do |el|
+   el.split[1]
+end
 
 total = movies.map { |el| el[:country] unless el[:country].include?("USA") }.compact.count
 
-
-#output = movies.map { |el| puts "#{el[:title]}: #{(el[:output])}; #{el[:genre]} - #{el[:duration]} and director: #{el[:director]}" }.take(5)
+output = movies.map { |el| puts "#{el[:title]}: #{(el[:output])}; #{el[:genre]} - #{el[:duration]} and director: #{el[:director]}" }.take(5)
 
 #output = movies.map { |el| puts "#{el[:title]}: #{el[:output]}; #{el[:comedy]}" }
-
-
-# def print_info(movies)
-#   movies.each { |el| el[:title] }
-# end
 
 # print_info([{title: movie[1], country: movie[3], output: movie[4], genre: movie[5], duration: movie[6], director: movie[8]}])
 
 
-# some = comedy.map { |el| el.upcase }
-# p some
 
-
-
-
-
-# movies = []
-
-# file = File.read("movies.txt")
-# lines = file.split("\n")
-
-# lines.each do |line|
-#    movie = line.split("|")
-#    movies.push({ title: movie[1], country: movie[3], output: movie[4], genre: movie[5], duration: movie[6], director: movie[8] })
-
-   #p movies
-  #  movies = [
-  #    { 
-  #     title: movie[1], 
-  #     country: movie[3],
-  #     output: movie[4],
-  #     genre:  movie[5],
-  #     durattion: movie[6] 
-  #     director: movie[8]
-  #    }
-  #  ]
-#end
-
-# movies.each do |film|
-#   p film[:duration] 
+# def print_info(arr)
+#   print "Print numbers: #{arr}"
 # end
 
-#movies.each do |film|
-  #p film[:title], film[:genre] if film[:genre].include?("Comedy") 
-#end
-
- 
+# print_info([1, 2, 3])
 
 
+def print_info(movies)
+  print "#{total}"
+end
+
+print_info("http://imdb.com/title/tt0111161/?ref_=chttp_tt_1|The Shawshank Redemption|1994|USA|1994-10-14|Crime,Drama|142 min|9.3|Frank Darabont|Tim Robbins,Morgan Freeman,Bob Gunton
+http://imdb.com/title/tt0068646/?ref_=chttp_tt_2|The Godfather|1972|USA|1972-03-24|Crime,Drama|175 min|9.2|Francis Ford Coppola|Marlon Brando,Al Pacino,James Caan
+http://imdb.com/title/tt0071562/?ref_=chttp_tt_3|The Godfather: Part II|1974|USA|1974-12-20|Crime,Drama|200 min|9.1|Francis Ford Coppola|Al Pacino,Robert De Niro,Robert Duvall"
+)
 
 
-#movies = { title: movie[1], country: movie[3], output: movie[4], genre: movie[5], duration: movie[6] }
-  #p movies.sort_by { |key, val| val }
-
-#movies.each { |key, val| puts "#{key} is #{val}" }
-  #movies.select { |key, val| puts "#{key} is #{val}" if val.include?("Comedy") }
-  
-  # title, genre = movie.values_at(1, 5)
-  # p movies[:title] if movies[:genre].include?("Comedy")
-  

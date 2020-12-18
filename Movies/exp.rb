@@ -24,7 +24,6 @@ print_movies(new_long)
 amount = movies.count { |el| !el[:country].include?("USA") }
 output = movies.map { |el| el[:output] }.take(10)
 title = movies.map { |el| el[:title] }.take(5)
-comedy = movies.map { |el| el[:genre] if el[:genre].include?("Comedy") }.compact.take(10)
 total = movies.map { |el| el[:country] unless el[:country].include?("USA") }.compact.count
 long = movies.map { |el| el[:duration].to_i }.sort.reverse.take(5)
 director = movies.map { |el| el[:director] }.uniq
@@ -38,9 +37,6 @@ def print_list(movies)
     puts "#{movie[:director]}"
   end
 end
-
-director = movies.select { |el| el[:director] }.uniq.take(10)
-print_list(director)
 
 def print_amount(movies)
   movies.each do |movie|

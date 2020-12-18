@@ -1,4 +1,3 @@
-
 # if (ARGV[0] == nil)
 #   abort "Put any argument!"
 # end
@@ -10,7 +9,6 @@ file = ARGV[0]
 
 current_path = File.dirname(__FILE__)
 file_path = current_path + file
-
 
 if File.exist?(file_path)
   f = File.new(file_path, "r")
@@ -28,7 +26,7 @@ movies = []
 file = File.read(file_path)
 lines = file.split("\n")
 lines.each do |line|
-  arr = line.split('|')
+  arr = line.split("|")
   name = arr[1]
   rating = arr[7].to_f
   acc = ((rating - 8.to_i) * 10).round()
@@ -39,11 +37,7 @@ lines.each do |line|
     puts "This movie has title #{name} and #{rating}"
   end
 end
+#comedy = movies.map { |el| el[:genre] if el[:genre].include?("Comedy") }.compact.take(10)
 
-
-
-
-
-
-
-
+# director = movies.select { |el| el[:director] }.uniq.take(10)
+# print_list(director)

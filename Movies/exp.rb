@@ -7,8 +7,10 @@ movies = lines.map { |line|
 }
 
 def print_movies(movies)
+  print "The list of the directors:\n"
   movies.each do |movie|
-    puts "This movie: #{movie[:title]}, date of output: (#{movie[:output]}), director of the movie: #{movie[:director]} and movie's duration - #{movie[:duration]}. Near forgot: this is #{movie[:genre]} and this movie is from #{movie[:country]}."
+    puts "\n#{movie[:director]}\n"
+    puts "\nThis movie: #{movie[:title]}, date of output: (#{movie[:output]}), director of the movie: #{movie[:director]} and movie's duration - #{movie[:duration]}. Near forgot: this is #{movie[:genre]} and this movie is from #{movie[:country]}. The amount of the movies not from USA: #{movie[:country]}."
   end
 end
 

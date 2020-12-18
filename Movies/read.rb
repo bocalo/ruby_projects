@@ -42,4 +42,20 @@ end
 # director = movies.select { |el| el[:director] }.uniq.take(10)
 # print_list(director)
 #long = movies.map { |el| el[:duration].to_i }.sort.reverse.take(5)
-# output = movies.map { |el| el[:output] }.take(10)S
+# output = movies.map { |el| el[:output] }.take(10)
+#title = movies.map { |el| el[:title] }.take(5)
+# amount = movies.count { |el| el[:country].include?("USA") }
+#origin = movies.select { |el| !el[:country].include?("USA") }.take(10)
+
+# def print_list(movies)
+#   print "The List Of the Directors:\n\n"
+#   movies.each do |movie|
+#     puts "#{movie[:director]}"
+#   end
+# end
+
+# def print_amount(movies)
+#   movies.each do |movie|
+#     puts "#{movie[:country]}"
+#   end
+# end

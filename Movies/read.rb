@@ -41,3 +41,5 @@ end
 
 # director = movies.select { |el| el[:director] }.uniq.take(10)
 # print_list(director)
+#long = movies.map { |el| el[:duration].to_i }.sort.reverse.take(5)
+# output = movies.map { |el| el[:output] }.take(10)S

@@ -1,3 +1,6 @@
+require "csv"
+require "ostruct"
+
 file = File.read("movies.txt")
 lines = file.split("\n")
 
@@ -23,3 +26,12 @@ puts "The amount of the movies not from USA is: #{total}"
 # print_movies(new_long)
 # print_movies(new_com)
 # print_movies(new_long)
+
+file = "movies.csv"
+CSV.open(file, "w") do |csv|
+  movies.each do |movie|
+    csv << movie
+  end
+end
+
+p CSV.read(file)

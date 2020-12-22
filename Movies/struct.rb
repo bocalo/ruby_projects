@@ -13,10 +13,14 @@ def print_movies(movies)
   end
 end
 
-new_long = movies.sort_by { |el| el[:duration].to_i }.reverse.take(5)
-new_com = movies.select { |el| el[:genre].include?("Comedy") }.compact.take(10)
-url = movies.map { |el| el[:url] }.uniq
-director = movies.map { |el| el[:director] }.uniq
+new_long = film.sort_by { |el| el.duration.to_i }.reverse.take(5)
+
+new_com = film.select { |el| el.genre.include?("Comedy") }.compact.take(10)
+
+url = film.map { |el| el.url }.uniq
+
+director = film.map { |el| el[:director] }.uniq
+
 arr = director.sort_by { |el| el.split[1] }.take(10)
 
 puts "The list of 10 famous directors: #{arr}"

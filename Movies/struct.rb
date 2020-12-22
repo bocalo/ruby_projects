@@ -19,12 +19,12 @@ new_com = film.select { |el| el.genre.include?("Comedy") }.compact.take(10)
 
 url = film.map { |el| el.url }.uniq
 
-director = film.map { |el| el[:director] }.uniq
+director = film.map { |el| el.director }.uniq
 
 arr = director.sort_by { |el| el.split[1] }.take(10)
 
 puts "The list of 10 famous directors: #{arr}"
-total = movies.map { |el| el[:country] unless el[:country].include?("USA") }.compact.count
+total = movies.map { |el| el.country unless el.country.include?("USA") }.compact.count
 puts "The amount of the movies not from USA is: #{total}"
 
 print_movies(new_long)

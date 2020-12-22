@@ -1,31 +1,37 @@
 require "csv"
 require "ostruct"
 
-# file = File.read("movies.txt")
-# lines = file.split("\n")
+movies = CSV.read("movies.txt", headers: [:url, :title, :date, :country, :output, :genre, :duration, :rating, :director, :actors], col_sep: "|", converters: :numeric)
 
-# movies = lines.map { |line|
-#   movie = line.split("|")
-#   { title: movie[1], country: movie[3], output: movie[4], genre: movie[5], duration: movie[6], director: movie[8] }
-# }
+film = movies.map do |movie|
+  movie = OpenStruct.new(movie)
+end
 
-# movies = CSV.read("movies.txt", headers: [:url, :title, :date, :country, :output, :genre, :duration, :rating, :director, :actors], col_sep: "|", converters: :numeric)
+#pp film[0].to_h
+some = OpenStruct.new(film[0].to_h)
+pp some
 
-# def print_movies(movies)
-#   movies.each do |movie|
-#     puts "\nThis movie: #{movie[:title]}, date of output: (#{movie[:output]}), director of the movie: #{movie[:director]} and movie's duration - #{movie[:duration]}. Near forgot: this is #{movie[:genre]} and this movie is from #{movie[:country]}."
-#   end
-# end
+def print_movies(movies)
+  movies.each do |movie|
+    puts "\nThe url #{movie[:url]} of this movie: #{movie[:title]}, date of output: (#{movie[:output]}), director of the movie: #{movie[:director]} and movie's duration - #{movie[:duration]}. Near forgot: this is #{movie[:genre]} and this movie is from #{movie[:country]}."
+  end
+end
 
-# new_long = movies.sort_by { |el| el[:duration].to_i }.reverse.take(5)
-# pp new_long
-# new_com = movies.select { |el| el[:genre].include?("Comedy") }.compact.take(10)
-# director = movies.map { |el| el[:director] }.uniq
-# arr = director.sort_by { |el| el.split[1] }.take(10)
-# puts "The list of 10 famous directors: #{arr}"
-# total = movies.map { |el| el[:country] unless el[:country].include?("USA") }.compact.count
-# puts "The amount of the movies not from USA is: #{total}"
+new_long = film.sort_by { |el| el.duration.to_i }.reverse.take(5)
+pp new_long
 
-# print_movies(new_long)
-# print_movies(new_com)
-# print_movies(new_long)
+new_com = film.select { |el| el.genre.include?("Comedy") }.compact.take(10)
+
+url = film.map { |el| el.url }.uniq
+
+director = film.map { |el| el.director }.uniq
+
+arr = director.sort_by { |el| el.split[1] }.take(10)
+
+puts "The list of 10 famous directors: #{arr}"
+total = film.map { |el| el.country unless el.country.include?("USA") }.compact.count
+puts "The amount of the movies not from USA is: #{total}"
+
+print_movies(new_long)
+print_movies(new_com)
+print_movies(new_long)

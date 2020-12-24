@@ -13,6 +13,23 @@ def print_movies(movies)
   end
 end
 
+out = film.map { |el| el.output }
+some = out.delete_if { |el| el.to_s.length != 10 }
+
+count = Hash.new(0)
+some.each do |el|
+  if el = Date.parse(el).mon
+    count[el] += 1
+  end
+  one = count.sort_by { |el| el[0] }
+
+  one.each do |month, count|
+    month = Date.new(2001, month)
+    month = month.strftime("%B")
+    puts "The month: #{month}. The amount of the movies: #{count}"
+  end
+end
+
 new_long = film.sort_by { |el| el.duration.to_i }.reverse.take(5)
 
 new_com = film.select { |el| el.genre.include?("Comedy") }.compact.take(10)

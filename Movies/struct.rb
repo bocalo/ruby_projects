@@ -19,8 +19,8 @@ some = out.delete_if { |el| el.to_s.length != 10 }
 count = Hash.new(0)
 some.each do |el|
   el = Date.parse(el).mon
-    count[el] += 1
-  end
+  count[el] += 1
+end
 one = count.sort_by { |el| el[0] }
 
 one.each do |month, count|

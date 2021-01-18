@@ -14,7 +14,8 @@ class Movie
   end
 
   def has_genre?(word)
-    #begin
+    raise "Genre not found"
     @genre.include?(word)
   end
 end
+

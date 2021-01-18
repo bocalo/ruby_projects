@@ -10,5 +10,6 @@ begin
 rescue 
   puts "Genre not found"
 end
-movie.has_genre?("Tragedy")
+
+pp movie.has_genre?("Drama")
 

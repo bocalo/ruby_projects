@@ -7,9 +7,11 @@ movie = Movie.new("http://imdb.com/title/tt1504320/?ref_=chttp_tt_222", "The Kin
 
 begin
   movie.has_genre?("Non-existing-genre")
-rescue 
+rescue
   puts "Genre not found"
 end
 
-pp movie.has_genre?("Drama")
+#pp movie.has_genre?("Drama")
 
+#pp movie.to_s
+#pp movie.inspect

@@ -13,5 +13,5 @@ end
 
 #pp movie.has_genre?("Drama")
 
-#pp movie.to_s
+pp movie.to_s
 #pp movie.inspect

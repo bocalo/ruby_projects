@@ -17,8 +17,7 @@ class Movie
     if @genre.include?(word)
       return true
     else
-      raise "Genre not found" 
+      raise "Genre not found"
     end
   end
 end
-

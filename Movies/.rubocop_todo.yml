@@ -7,15 +7,16 @@
 # versions of RuboCop, may require this file to be generated again.
 
 # Offense count: 1
-Lint/UselessAssignment:
+#Lint/UselessAssignment:
+AllCops:
   Exclude:
-    - 'demo.rb'
+    - "demo.rb"
 
 # Offense count: 2
 # Configuration parameters: CountComments, ExcludedMethods.
 # ExcludedMethods: refine
 Metrics/BlockLength:
-  Max: 37
+  Max: 50
 
 # Offense count: 1
 # Configuration parameters: CountKeywordArgs.
@@ -25,10 +26,10 @@ Metrics/ParameterLists:
 # Offense count: 2
 Style/Documentation:
   Exclude:
-    - 'spec/**/*'
-    - 'test/**/*'
-    - 'lib/movie.rb'
-    - 'lib/movie_collection.rb'
+    - "spec/**/*"
+    - "test/**/*"
+    - "lib/movie.rb"
+    - "lib/movie_collection.rb"
 
 # Offense count: 25
 # Cop supports --auto-correct.
@@ -36,8 +37,10 @@ Style/Documentation:
 # SupportedStyles: single_quotes, double_quotes
 Style/StringLiterals:
   Exclude:
-    - 'lib/movie.rb'
-    - 'spec/movie_spec.rb'
+    - "lib/movie.rb"
+    - "lib/movie_collection.rb"
+    - "spec/movie_spec.rb"
+    - "spec/movie_collection_spec.rb"
 
 # Offense count: 10
 # Cop supports --auto-correct.

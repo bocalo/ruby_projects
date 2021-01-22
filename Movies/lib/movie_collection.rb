@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require 'csv'
-require 'ostruct'
-require 'date'
-require_relative 'movie.rb'
+require "csv"
+require "ostruct"
+require "date"
+require_relative "movie.rb"
 
 class MovieCollection
   def initialize(_file)
-    @file = CSV.read('movies.txt', col_sep: '|').take(5)
+    @file = CSV.read("movies.txt", col_sep: "|").take(5)
     @movies = @file.map { |el| Movie.new(*el) }
   end
 
@@ -15,14 +15,10 @@ class MovieCollection
     @movies
   end
 
-  # def sort_by(field)
-  #   @movies.sort_by { |el| el.send("#{field}") }
-  # end
-
   def sort_by(field)
     @movies.sort_by { |el| el.send(field.to_s) }
   rescue StandardError
-    raise 'There is no such date'
+    raise "There is no such date"
   end
 
   def filter(field)
@@ -47,7 +43,7 @@ class MovieCollection
   def all_fields(field_name)
     @movies.map do |movie|
       if field_name == :actors
-        movie.actors.split(',')
+        movie.actors.split(",")
       else
         movie.send(field_name)
       end

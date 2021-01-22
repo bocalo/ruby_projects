@@ -29,7 +29,7 @@ describe Movie do
 
   describe "#genre?(word)" do
     context "when a valid word is given" do
-      it "returns te same word" do
+      it "returns true" do
         expect(movie.has_genre?("Drama")).to eq(true)
       end
     end

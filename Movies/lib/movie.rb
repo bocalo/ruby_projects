@@ -1,8 +1,19 @@
+# frozen_string_literal: true
+
 class Movie
   attr_accessor :url, :title, :date, :country, :output, :genre, :duration, :rating, :director, :actors
 
   def initialize(url, title, date, country, output, genre, duration, rating, director, actors)
-    @url, @title, @date, @country, @output, @genre, @duration, @rating, @director, @actors = url, title, date, country, output, genre, duration, rating, director, actors
+    @url = url
+    @title = title
+    @date = date
+    @country = country
+    @output = output
+    @genre = genre
+    @duration = duration
+    @rating = rating
+    @director = director
+    @actors = actors
   end
 
   def to_s
@@ -13,11 +24,17 @@ class Movie
     "Movie: #{title}(#{@date}) - #{@director} - #{@actors} - #{@country}"
   end
 
-  def has_genre?(word)
-    if @genre.include?(word)
-      return true
-    else
-      raise "Genre not found"
-    end
+  # def genre?(word)
+  #   if @genre.include?(word)
+  #     true
+  #   else
+  #     raise "Genre not found"
+  #   end
+  # end
+
+  def genre?(word)
+    return true if @genre.include?(word)
+
+    raise "Genre not found"
   end
 end

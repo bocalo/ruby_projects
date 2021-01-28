@@ -24,14 +24,6 @@ class Movie
     "Movie: #{title}(#{@date}) - #{@director} - #{@actors} - #{@country}"
   end
 
-  # def genre?(word)
-  #   if @genre.include?(word)
-  #     true
-  #   else
-  #     raise "Genre not found"
-  #   end
-  # end
-
   def genre?(word)
     return true if @genre.include?(word)
 

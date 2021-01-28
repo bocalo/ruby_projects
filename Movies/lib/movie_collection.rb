@@ -4,10 +4,11 @@ require "csv"
 require "ostruct"
 require "date"
 require_relative "movie.rb"
+#require 'byebug'
 
 class MovieCollection
-  def initialize(_file)
-    @file = CSV.read("movies.txt", col_sep: "|").take(5)
+  def initialize(filename)
+    @file = CSV.read(filename, col_sep: "|").take(250)
     @movies = @file.map { |el| Movie.new(*el) }
   end
 
@@ -24,7 +25,13 @@ class MovieCollection
   def filter(field)
     field_name = field.keys.first
     field_value = field.values.first
-    @movies.select { |el| el.send(field_name) == field_value }
+    @movies.select do |movie|
+      if field_name == :genre
+        movie.genre.include?(field_value)
+      else
+        movie.send(field_name) == field_value
+      end
+    end
   end
 
   def stats(field_name)

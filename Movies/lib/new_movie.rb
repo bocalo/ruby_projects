@@ -1,7 +1,7 @@
 require_relative "movie.rb"
 require_relative "movie_collection.rb"
 
-class NewMovie
+class NewMovie < Movie
   def initialize(url, title, date, country, output, genre, duration, rating, director, actors)
     @url = url
     @title = title
@@ -16,7 +16,7 @@ class NewMovie
   end
 
   def to_s
-    "Movie(1900-1945): The title - #{title} - old movie (#{date} year)"
+    "Movie(1900-1945): The title - #{@title} - old movie (#{@date} year)"
   end
 end
 

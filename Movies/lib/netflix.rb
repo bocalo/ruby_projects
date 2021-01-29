@@ -6,18 +6,10 @@ require_relative "modern_movie.rb"
 require_relative "new_movie.rb"
 
 class Netflix
-  def initialize(url, title, date, country, output, genre, duration, rating, director, actors)
-    @url = url
-    @title = title
-    @date = date
-    @country = country
-    @output = output
-    @genre = genre
-    @duration = duration
-    @rating = rating
-    @director = director
-    @actors = actors
-    @balance = 0
+  def initialize(filename)
+    #@movies = MovieCollection.new(filename)
+    @filename = filename
+    @balance = 25
   end
 
   def years_by_type(type)
@@ -34,16 +26,25 @@ class Netflix
   end
 
   def show(genre:, period:)
-    movies = MovieCollection.new("../movies.txt")
-    from, to = years_by_type(period)
-    filtered_movies = movies.filter(genre: genre)
-    filtered_movies.select do |movie|
-      movie.date.to_i >= from && movie.date.to_i <= to
+    if enough?(period)
+      #movies = MovieCollection.new("../movies.txt")
+      from, to = years_by_type(period)
+      filtered_movies = movies.filter(genre: genre)
+      filtered_movies.select do |movie|
+        movie.date.to_i >= from && movie.date.to_i <= to
+      end
+      @balance -= price_by_type(period)
+    else
+      raise "Error"
     end
   end
 
   def pay(money)
     @balance += money
+  end
+
+  def enough?(type)
+    @balance >= price_by_type(type)
   end
 
   def price_by_type(type)
@@ -60,14 +61,15 @@ class Netflix
   end
 end
 
-net = Netflix.new("http://imdb.com/title/tt1504320/?ref_=chttp_tt_222", "The King's Speech", 2010, "UK", "2010-12-25", "Biography,Drama,History", "118 min", 8.1, "Tom Hooper", "Colin Firth,Geoffrey Rush,Helena Bonham Carter")
+#pp net = Netflix.new("http://imdb.com/title/tt1504320/?ref_=chttp_tt_222", "The King's Speech", 2010, "UK", "2010-12-25", "Biography,Drama,History", "118 min", 8.1, "Tom Hooper", "Colin Firth,Geoffrey Rush,Helena Bonham Carter")
 
 #pp net.show(genre: "Comedy", period: :classic)
-pp net.pay(25)
-pp net.pay(25)
+# pp net.pay(25)
+# pp net.pay(25)
 # pp net.price_by_type(:classic)
 # pp net.years_by_type(:nuevo)
 
 #puts "This movie was made from #{from} to #{to}"
 #"Now showing: #{movies}: #{title} - #{genre} - #{period}"
 # pp net.show("19,00", "21,00")
+#movies = MovieCollection.new("../movies.txt")

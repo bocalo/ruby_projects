@@ -27,7 +27,7 @@ class Netflix
 
   def show(genre:, period:)
     if enough?(period)
-      #movies = MovieCollection.new("../movies.txt")
+      movies = MovieCollection.new(@filename)
       from, to = years_by_type(period)
       filtered_movies = movies.filter(genre: genre)
       filtered_movies.select do |movie|

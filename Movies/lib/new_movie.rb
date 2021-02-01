@@ -37,4 +37,3 @@ nuevo = NewMovie.new("http://imdb.com/title/tt2106476/?ref_=chttp_tt_118",
                      "8.3",
                      "Thomas Vinterberg",
                      "Mads Mikkelsen,Thomas Bo Larsen,Annika Wedderkopp")
-pp nuevo.to_s

@@ -4,12 +4,37 @@ require "csv"
 require "ostruct"
 require "date"
 require_relative "movie.rb"
-#require 'byebug'
+require_relative "netflix.rb"
 
 class MovieCollection
   def initialize(filename)
     @file = CSV.read(filename, col_sep: "|").take(250)
     @movies = @file.map { |el| Movie.new(*el) }
+
+    # @movies = @file.map do |el|
+    #   type = type_by_year(el[2].to_i)
+    #   if type == :ancient
+    #     ancient = AncientMovie.new(*el)
+    #   elsif type == :classic
+    #     classic = ClassicMovie.new(*el)
+    #   elsif type == :modern
+    #     modern = ModernMovie.new(*el)
+    #   elsif type == :nuevo
+    #     nuevo = NewMovie.new(*el)
+    #   end
+    # end
+  end
+
+  def type_by_year(year)
+    if year > 1900 && year < 1945
+      type = :ancient
+    elsif year > 1945 && year < 1968
+      type = :classic
+    elsif year > 1968 && year < 2000
+      type = :modern
+    elsif year > 2000 && year < 2021
+      type = :nuevo
+    end
   end
 
   def all
@@ -45,7 +70,7 @@ class MovieCollection
     count
   end
 
-  private
+  #private
 
   def all_fields(field_name)
     @movies.map do |movie|

@@ -31,19 +31,19 @@ class ClassicMovie < Movie
   end
 end
 
-classic = ClassicMovie.new("http://imdb.com/title/tt0050083/?ref_=chttp_tt_5",
-                           "12 Angry Men",
-                           "1957",
-                           "USA",
-                           "1957-04",
-                           "Crime,Drama",
-                           "96 min",
-                           "8.9",
-                           "Sidney Lumet",
-                           "Henry Fonda,Lee J. Cobb,Martin Balsam")
+# classic = ClassicMovie.new("http://imdb.com/title/tt0050083/?ref_=chttp_tt_5",
+#                            "12 Angry Men",
+#                            "1957",
+#                            "USA",
+#                            "1957-04",
+#                            "Crime,Drama",
+#                            "96 min",
+#                            "8.9",
+#                            "Sidney Lumet",
+#                            "Henry Fonda,Lee J. Cobb,Martin Balsam")
 
 #classic.other_movies("Sidney Lumet", "Comedy")
-classic.other_movies("Comedy")
+#classic.other_movies("Comedy")
 #pp classic.to_s
 
 # def to_s

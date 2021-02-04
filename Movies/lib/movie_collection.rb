@@ -5,40 +5,49 @@ require "ostruct"
 require "date"
 require_relative "movie.rb"
 require_relative "netflix.rb"
+require_relative "ancient_movie.rb"
+require_relative "classic_movie.rb"
+require_relative "modern_movie.rb"
+require_relative "new_movie.rb"
 
 class MovieCollection
   def initialize(filename)
     @file = CSV.read(filename, col_sep: "|").take(250)
-    @movies = @file.map { |el| Movie.new(*el) }
-
-    # @movies = @file.map do |el|
-    #   type = type_by_year(el[2].to_i)
-    #   if type == :ancient
-    #     ancient = AncientMovie.new(*el)
-    #   elsif type == :classic
-    #     classic = ClassicMovie.new(*el)
-    #   elsif type == :modern
-    #     modern = ModernMovie.new(*el)
-    #   elsif type == :nuevo
-    #     nuevo = NewMovie.new(*el)
-    #   end
-    # end
+    #@movies = @file.map { |el| Movie.new(*el) }
+    @movies = @file.map do |el|
+      type = type_by_year(el[2].to_i)
+      if type == :ancient
+        ancient = AncientMovie.new(*el)
+      elsif type == :classic
+        classic = ClassicMovie.new(*el)
+      elsif type == :modern
+        modern = ModernMovie.new(*el)
+      elsif type == :nuevo
+        nuevo = NewMovie.new(*el)
+      end
+    end
   end
 
   def type_by_year(year)
     if year > 1900 && year < 1945
       type = :ancient
-    elsif year > 1945 && year < 1968
+    elsif year >= 1945 && year < 1968
       type = :classic
-    elsif year > 1968 && year < 2000
+    elsif year >= 1968 && year < 2000
       type = :modern
-    elsif year > 2000 && year < 2021
+    elsif year >= 2000 && year < 2021
       type = :nuevo
     end
   end
 
   def all
     @movies
+  end
+
+  def to_s
+    @movies.each do |movie|
+      puts "Movie: #{movie.url} - #{movie.title} - #{movie.date} - #{movie.country} - #{movie.output} - #{movie.genre} - #{movie.duration} - #{movie.rating} - #{movie.director} - #{movie.actors}"
+    end
   end
 
   def sort_by(field)

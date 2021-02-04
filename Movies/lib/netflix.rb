@@ -39,32 +39,14 @@ class Netflix
     end
   end
 
-  
-  # def how_much?(title)
-  #  movies = MovieCollection.new(@filename)
-  #   movies.all.find do |movie|
-  #   pp movie.title
-  #  end
-  # end
-
   def how_much?(title)
-   movies = MovieCollection.new(@filename)
-   movies.all.find do |movie|
-    if title?(title)
-      type = type_by_year(movie.date)
-      
-    end
-   end
-  end
-
-  def title?(title)
     movies = MovieCollection.new(@filename)
-    movies.all.find do |movie|
-      movie.title.include?(title) 
+    movie = movies.all.find do |m|
+      m.title == title
     end
+    type = movies.type_by_year(movie.date.to_i)
+    price = price_by_type(type)
   end
-
-  #hash[type] = price
 
   def pay(money)
     @balance += money
@@ -87,30 +69,3 @@ class Netflix
     price
   end
 end
-
-#pp net = Netflix.new("http://imdb.com/title/tt1504320/?ref_=chttp_tt_222", "The King's Speech", 2010, "UK", "2010-12-25", "Biography,Drama,History", "118 min", 8.1, "Tom Hooper", "Colin Firth,Geoffrey Rush,Helena Bonham Carter")
-
-# pp net.pay(25)
-# pp net.pay(25)
-# pp net.price_by_type(:classic)
-# pp net.years_by_type(:nuevo)
-
-#puts "This movie was made from #{from} to #{to}"
-#"Now showing: #{movies}: #{title} - #{genre} - #{period}"
-# pp net.show("19,00", "21,00")
-#movies = MovieCollection.new("../movies.txt")
-# return true if title.include?(title)
-
-# raise "Title not found"
-
-# def how_much?(title)
-  #   if title?(title) == AncientMovie.new(el*)
-  #     puts "The price of #{title} is 1 dollar"
-  #   elsif title?(title) == ClassicMovie.new(*el)
-  #     puts "The price of #{title} is 1.5 dollar"
-  #   elsif title?(title) == ModernMovie.new(*el)
-  #     puts "The price of #{title} is 3 dollar"
-  #   elsif title?(title) == NewMovie.new(*el)
-  #     puts "The price of #{title} is 5 dollar"
-  #   end
-  # end

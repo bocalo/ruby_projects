@@ -13,7 +13,6 @@ require_relative "new_movie.rb"
 class MovieCollection
   def initialize(filename)
     @file = CSV.read(filename, col_sep: "|").take(250)
-    #@movies = @file.map { |el| Movie.new(*el) }
     @movies = @file.map do |el|
       type = type_by_year(el[2].to_i)
       if type == :ancient
@@ -79,7 +78,7 @@ class MovieCollection
     count
   end
 
-  #private
+  private
 
   def all_fields(field_name)
     @movies.map do |movie|

@@ -1,9 +1,4 @@
-require_relative "movie.rb"
 require_relative "movie_collection.rb"
-require_relative "ancient_movie.rb"
-require_relative "classic_movie.rb"
-require_relative "modern_movie.rb"
-require_relative "new_movie.rb"
 
 class Theatre
   def initialize(filename)
@@ -29,7 +24,7 @@ class Theatre
     genre = movie.genre
     if movie.date.to_i >= 1945 && movie.date.to_i < 1968
       return "morning"
-    elsif genre.include?("Comedy") || movie.genre.include?("Adventure")
+    elsif genre.include?("Comedy") || genre.include?("Adventure")
       return "day"
     elsif genre.include?("Drama") || genre.include?("Horror")
       return "evening"
@@ -38,10 +33,3 @@ class Theatre
     end
   end
 end
-
-#   def random_movie
-#     movies = MovieCollection.new(@filename)
-#     movie = movies.all.sample
-
-#   end
-# end

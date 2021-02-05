@@ -1,5 +1,4 @@
-require_relative "movie.rb"
-require_relative "movie_collection.rb"
+require_relative "movie"
 
 class NewMovie < Movie
   def to_s

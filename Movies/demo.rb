@@ -37,7 +37,7 @@ net = Netflix.new("movies.txt")
 #pp net.title?("The Terminator")
 #pp net.pay(35)
 #pp net.enough?(:classic)
-pp net.send(:enough?, :classic)
+#pp net.send(:enough?, :classic)
 #pp net.price_by_type(:classic)
 #pp net.years_by_type(:nuevo)
 
@@ -89,7 +89,7 @@ nuevo = NewMovie.new("http://imdb.com/title/tt0405159/?ref_=chttp_tt_185",
                      "8.1",
                      "Clint Eastwood",
                      "Hilary Swank,Clint Eastwood,Morgan Freeman")
-#pp nuevo.to_s
+pp nuevo.to_s
 
 #pp theatre.show(14.00)
 #pp theatre.when?("The Terminator")

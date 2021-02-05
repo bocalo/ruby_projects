@@ -1,4 +1,4 @@
-require_relative "movie_collection.rb"
+require_relative "movie_collection"
 
 class Theatre
   def initialize(filename)

@@ -1,4 +1,4 @@
-require_relative "movie.rb"
+require_relative "movie"
 
 class ClassicMovie < Movie
   def other_movies(genre)

@@ -3,12 +3,12 @@
 require "csv"
 require "ostruct"
 require "date"
-require_relative "movie.rb"
-require_relative "netflix.rb"
-require_relative "ancient_movie.rb"
-require_relative "classic_movie.rb"
-require_relative "modern_movie.rb"
-require_relative "new_movie.rb"
+require_relative "movie"
+require_relative "netflix"
+require_relative "ancient_movie"
+require_relative "classic_movie"
+require_relative "modern_movie"
+require_relative "new_movie"
 
 class MovieCollection
   def initialize(filename)

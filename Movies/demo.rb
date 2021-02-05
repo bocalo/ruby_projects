@@ -89,12 +89,13 @@ nuevo = NewMovie.new("http://imdb.com/title/tt0405159/?ref_=chttp_tt_185",
                      "8.1",
                      "Clint Eastwood",
                      "Hilary Swank,Clint Eastwood,Morgan Freeman")
-pp nuevo.to_s
+#pp nuevo.to_s
 
 #pp theatre.show(14.00)
-#pp theatre.when?("The Terminator")
+#pp theatre.when?("The King's Speech")
 #pp theatre.random_movie
 #pp theatre.show(9.00)
+pp theatre.random_movie
 
 #puts "This movie was made from #{from} to #{to}"
 #"Now showing: #{movies}: #{title} - #{genre} - #{period}"

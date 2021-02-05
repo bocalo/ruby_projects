@@ -2,23 +2,22 @@ require_relative "movie_collection"
 
 class Theatre
   def initialize(filename)
+    @movies = MovieCollection.new(filename)
     @filename = filename
   end
 
   def show(time)
-    movies = MovieCollection.new(@filename)
     if time >= 9.00 && time < 12.00
-      movies.all.select { |movie| movie.date.to_i >= 1945 && movie.date.to_i < 1968 }
+      @movies.all.select { |movie| movie.date.to_i >= 1945 && movie.date.to_i < 1968 }
     elsif time >= 12.00 && time < 17.00
-      movies.filter(genre: "Adventure") + movies.filter(genre: "Comedy")
+      @movies.filter(genre: "Adventure") + @movies.filter(genre: "Comedy")
     elsif time >= 17.00 && time < 24.00
-      movies.filter(genre: "Drama") + movies.filter(genre: "Horror")
+      @movies.filter(genre: "Drama") + @movies.filter(genre: "Horror")
     end
   end
 
   def when?(title)
-    movies = MovieCollection.new(@filename)
-    movie = movies.all.find do |m|
+    movie = @movies.all.find do |m|
       m.title == title
     end
     genre = movie.genre
@@ -31,5 +30,10 @@ class Theatre
     else
       raise "There is not that movie in our theatre"
     end
+  end
+
+  def random_movie
+    rand = 10.times.map { @movies.all.sample }.sort_by { |el| el.rating }
+    rand.last
   end
 end

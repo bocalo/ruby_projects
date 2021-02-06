@@ -11,6 +11,8 @@ require_relative "modern_movie"
 require_relative "new_movie"
 
 class MovieCollection
+  include Enumerable
+
   def initialize(filename)
     @file = CSV.read(filename, col_sep: "|").take(250)
     @movies = @file.map do |el|

@@ -1,6 +1,9 @@
 require_relative "movie_collection"
+require_relative "cash"
 
 class Netflix
+  include Cashable
+
   def initialize(filename)
     @movies = MovieCollection.new(filename)
     @filename = filename
@@ -40,8 +43,15 @@ class Netflix
     price = price_by_type(type)
   end
 
-  def pay(money)
-    @balance += money
+  def buy_ticket(title)
+    puts "Have you bought the ticket on the movie #{title}?"
+    if @balance += 3
+      "morning"
+    elsif @balance += 5
+      "day"
+    elsif @balance += 10
+      "evening"
+    end
   end
 
   private

@@ -40,6 +40,9 @@ net = Netflix.new("movies.txt")
 #pp net.send(:enough?, :classic)
 #pp net.price_by_type(:classic)
 #pp net.years_by_type(:nuevo)
+#pp net.take("Bank")
+#pp net.buy_ticket("Ben-Hur")
+#pp net.cash(50)
 
 theatre = Theatre.new("movies.txt")
 ancient = AncientMovie.new("http://imdb.com/title/tt0036868/?ref_=chttp_tt_195",
@@ -95,7 +98,9 @@ nuevo = NewMovie.new("http://imdb.com/title/tt0405159/?ref_=chttp_tt_185",
 #pp theatre.when?("The King's Speech")
 #pp theatre.random_movie
 #pp theatre.show(9.00)
-pp theatre.random_movie
+#pp theatre.random_movie
+#pp theatre.pay(100)
+#pp theatre.cash(100)
 
 #puts "This movie was made from #{from} to #{to}"
 #"Now showing: #{movies}: #{title} - #{genre} - #{period}"

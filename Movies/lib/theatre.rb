@@ -1,9 +1,13 @@
 require_relative "movie_collection"
+require_relative "cash"
 
 class Theatre
+  include Cashable
+
   def initialize(filename)
     @movies = MovieCollection.new(filename)
     @filename = filename
+    @balance = 25
   end
 
   def show(time)

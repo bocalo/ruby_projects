@@ -1,10 +1,6 @@
-module Cashable
+module Cash
   def cash(money)
     pay(money)
-  end
-
-  def cash(money)
-    @balance += money
   end
 
   def pay(money)
@@ -13,6 +9,7 @@ module Cashable
 
   def take(who)
     if who == "Bank"
+      @balance = 0
       puts "The encashment was carried out."
     else
       raise "Call the police right now!"

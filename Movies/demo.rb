@@ -40,7 +40,7 @@ net = Netflix.new("movies.txt")
 #pp net.send(:enough?, :classic)
 #pp net.price_by_type(:classic)
 #pp net.years_by_type(:nuevo)
-#pp net.take("Bank")
+pp net.take("Bank")
 #pp net.buy_ticket("Ben-Hur")
 #pp net.cash(50)
 

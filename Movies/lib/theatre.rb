@@ -2,7 +2,7 @@ require_relative "movie_collection"
 require_relative "cash"
 
 class Theatre
-  include Cashable
+  include Cash
 
   def initialize(filename)
     @movies = MovieCollection.new(filename)
@@ -39,5 +39,16 @@ class Theatre
   def random_movie
     rand = 10.times.map { @movies.all.sample }.sort_by { |el| el.rating }
     rand.last
+  end
+
+  def buy_ticket(title)
+    puts "Have you bought the ticket on the movie #{title}?"
+    if @balance += 3
+      "morning"
+    elsif @balance += 5
+      "day"
+    elsif @balance += 10
+      "evening"
+    end
   end
 end

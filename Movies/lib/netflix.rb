@@ -1,8 +1,10 @@
 require_relative "movie_collection"
 require_relative "cash"
+require "money"
 
 class Netflix
-  include Cash
+  include Cash::InstanceMetods
+  extend Cash::ClassMethods
 
   def initialize(filename)
     @movies = MovieCollection.new(filename)

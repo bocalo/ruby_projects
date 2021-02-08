@@ -1,8 +1,9 @@
 require_relative "movie_collection"
 require_relative "cash"
+require "money"
 
 class Theatre
-  include Cash
+  include Cash::InstanceMetods
 
   def initialize(filename)
     @movies = MovieCollection.new(filename)
@@ -42,13 +43,22 @@ class Theatre
   end
 
   def buy_ticket(title)
-    puts "Have you bought the ticket on the movie #{title}?"
-    if @balance += 3
-      "morning"
-    elsif @balance += 5
-      "day"
-    elsif @balance += 10
-      "evening"
+    puts "You've bought the ticket on the #{title}"
+
+    result = when?(title)
+
+    if result == "morning"
+      @balance += 3
+    elsif result == "day"
+      @balance += 5
+    elsif result == "evening"
+      @balance += 10
+    else
+      @balance
     end
+  end
+
+  def cash
+    @balance
   end
 end

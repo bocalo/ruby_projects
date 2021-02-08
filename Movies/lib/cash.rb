@@ -1,18 +1,22 @@
 module Cash
-  def cash(money)
-    pay(money)
+  module ClassMethods
+    def cash
+      @balance
+    end
   end
 
-  def pay(money)
-    @balance += money
-  end
+  module InstanceMetods
+    def pay(money)
+      @balance += money
+    end
 
-  def take(who)
-    if who == "Bank"
-      @balance = 0
-      puts "The encashment was carried out."
-    else
-      raise "Call the police right now!"
+    def take(who)
+      if who == "Bank"
+        @balance = 0
+        puts "The encashment was carried out."
+      else
+        raise "Call the police right now!"
+      end
     end
   end
 end

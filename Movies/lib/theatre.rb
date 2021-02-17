@@ -3,7 +3,7 @@ require_relative "cash"
 require "money"
 
 class Theatre
-  include Cash::InstanceMetods
+  include Cash::Cashable
 
   def initialize(filename)
     @movies = MovieCollection.new(filename)
@@ -58,7 +58,7 @@ class Theatre
     end
   end
 
-  def cash
-    @balance
-  end
+  # def cash
+  #   @balance
+  # end
 end

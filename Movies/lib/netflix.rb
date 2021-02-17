@@ -3,8 +3,7 @@ require_relative "cash"
 require "money"
 
 class Netflix
-  include Cash::InstanceMetods
-  extend Cash::ClassMethods
+  include Cash::Cashable
 
   def initialize(filename)
     @movies = MovieCollection.new(filename)

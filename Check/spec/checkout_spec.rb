@@ -22,6 +22,7 @@ describe Checkout do
         expect(ch.total).to eq(4.50)
       end
     end
+    
     context "four pepsi cola" do
       before do
         ch.add("PC")
@@ -34,6 +35,7 @@ describe Checkout do
         expect(ch.total).to eq(8.0)
       end
     end
+
     context "one water" do
       before do
         ch.add("WA")
@@ -42,6 +44,7 @@ describe Checkout do
         expect(ch.total).to eq(0.85)
       end
     end
+
     context "two coca cola, one water and two pepsi cola" do
       before do
         ch.add("CC")

@@ -1,61 +1,107 @@
-require_relative 'product'
+require_relative "product"
 
 class Checkout
   attr_reader :items
 
   def initialize
-     @items = []
+    @items = []
   end
 
   def add(code)
-    puts @items << Product.for(code)
+    product = @items.find do |item|
+      item.code == code
+    end
+
+    if product.nil?
+      new_product = Product.for(code)
+      @items << new_product
+      new_product.quantity = 1
+    else
+      @items
+      product.quantity += 1
+    end
   end
 
-  # def total
-  #   discount_pc(items) + discount_cc(items) + discount_wa(items)
-  # end
+  def discount_pc
+    account("PC")
+    take_price("PC")
+    res = take_price("PC") * account("PC")
 
-  # def discount_pc(items)
-  #   price_pc = 2.0
-    #count = items.group_by { |item| item == "PC" }.values.map { |el| el.length }.first
-    #pp count = items.group_by { |item| item == "PC" }.count
-    
-  #   if count >= 3
-  #     price_pc *= count
-  #     price_pc -= price_pc * 0.2
-  #   else
-  #     price_pc *= count
-  #   end
-  # end
+    if account("PC") >= 3
+      res -= res * 0.2
+    else
+      res = take_price("PC") * account("PC")
+    end
+  end
 
-  # def discount_cc(items)
-  #   price_cc = 1.5
-    #count = items.group_by { |item| item == "CC" }.values.map { |el| el.length }.last
-    #count = items.group_by { |item| item == "CC" }.count
-  #   price_cc = price_cc * count
-  #   if count > 0 && count % 2 == 0
-  #     price_cc /= 2
-  #   elsif count % 2 != 0
-  #     price_cc = (price_cc - 1.5) / 2 + 1.5
-  #   end
-  # end
+  def discount_cc
+    account("CC")
+    take_price("CC")
 
-  # def discount_wa(items)
-  #   price_wa = 0.85
-    #count = items.group_by { |item| item == "WA" }.count
-#     price_wa *= count
-#   end
-# end
+    res = take_price("CC") * account("CC")
+    if account("CC") > 0 && account("CC") % 2 == 0
+      res / 2
+    elsif account("CC") % 2 != 0
+      res = (res - 1.5) / 2 + 1.5
+    end
+  end
+
+  def discount_wa
+    account("WA")
+    take_price("WA")
+    res = account("WA") * take_price("WA")
+  end
+
+  def total
+    total = discount_pc + discount_cc + discount_wa
+    total.round(2)
+  end
+
+  private
+
+  def account(code)
+    product = @items.find { |item| item.code == code }
+    if product == nil
+      0
+    else
+      product.quantity
+    end
+  end
+
+  def take_price(code)
+    product = @items.find { |item| item.code == code }
+    if product == nil
+      0
+    else
+      product.price
+    end
+  end
 end
-ch = Checkout.new
-# ch.add('PC')
-# ch.add('PC')
-ch.add('CC')
-ch.add('CC')
-# ch.add('WA')
-#ch.add('WA')
-#pp ch.discount_pc(["PC", "CC", "PC", "WA"])
-#pp ch.discount_cc(["PC", "CC", "PC", "WA"])
-#pp ch.discount_wa(["PC", "CC", "PC"])
-#pp ch.total
 
+ch = Checkout.new
+
+# pp ch.add("PC")
+# pp ch.add("PC")
+
+ch.add("PC")
+ch.add("CC")
+ch.add("CC")
+#ch.add("WA")
+
+# ch.add("CC")
+# ch.add("CC")
+# ch.add("CC")
+# ch.add("CC")
+# ch.add("CC")
+# ch.add("WA")
+#pp ch.account("PC")
+#pp ch.account("CC")
+pp ch.account("WA")
+#pp ch.take_price("CC")
+#pp ch.take_price("WA")
+#pp ch.send(:account, "PC")
+# pp ch.add("WA")
+#pp ch.discount_pc
+# ch.discount_cc
+#pp ch.discount_wa
+pp ch.total

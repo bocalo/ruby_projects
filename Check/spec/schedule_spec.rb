@@ -19,4 +19,3 @@ describe DailySchedule do
     end
   end
 end
-

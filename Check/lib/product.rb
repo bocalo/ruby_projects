@@ -1,12 +1,11 @@
 class Product
-  attr_reader :code, :price, :count
+  attr_reader :code, :price
   attr_accessor :quantity
 
   def initialize(code, price)
     @code = code
     @price = price
     @quantity = 0
-    @count == 0
   end
 
   def self.for(code)
@@ -19,5 +18,3 @@ class Product
     end
   end
 end
-
-  

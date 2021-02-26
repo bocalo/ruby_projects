@@ -12,8 +12,6 @@ class DailySchedule
   end
 end
 
-
-
 pp DailySchedule.new((9..18).to_a, [14, 15, 18]).available?([15]) #false
 #pp DailySchedule.new((9..18).to_a, [14, 15, 18]).available?([10]) # true
 # DailySchedule.new((9..18).to_a, [14, 15, 18]).available?([7])  #false

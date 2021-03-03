@@ -25,19 +25,18 @@ class Feed
     sort_by(:start_time).take(n)
   end
 
-  # def sort_by(field)
-  #   @events.sort_by { |el| el.send(field.to_s) }
-  # rescue StandardError
-  #   raise "There is no such date"
-  # end
-
   def sort_by(field)
     @events.sort_by { |el| el == el.start_time.scan(/\d+/).last.to_i }.reverse
   rescue StandardError
     raise "There is no such date"
   end
 
-  def find(hash)
+  def find(field)
+    field_name = field.keys.first
+    field_value = field.values.first
+    @events.find do |event|
+      field_value.any? { |el| event.tags.include?(el) }
+    end
   end
 
   def by_organizer(email)

@@ -91,4 +91,25 @@ describe Feed do
       end
     end
   end
+
+  describe "#pending_events" do
+    context "three events" do
+      before do
+        feed.add(event1)
+        feed.add(event2)
+        feed.add(event3)
+      end
+      let(:event1) { Event.new("Programming", "some fastive events about programming scince", "Tambov", "10.02.2005", "12.02.2005", "tambov@fastive.ru", "google", ["programming", "science", "tambov"]) }
+
+      let(:event2) { Event.new("Ruby's Day", "meeting of the programmers in ruby ", "London", "19.05.2010", "21.05.2010", "ruby@london.com", "facebook", ["programmers", "ruby", "meeting"]) }
+
+      let(:event3) {
+        Event.new("Day of Rails", "meeting people who loves rails",
+                  "Riga", "10.08.2015", "15.08.2015", "rails@riga.com", "twitter", ["rails", "riga", "twitter"])
+      }
+      it "returns array if all events have status pending" do
+        expect(feed.pending_events).to eq([event1, event2, event3])
+      end
+    end
+  end
 end

@@ -17,11 +17,18 @@ def to_s
   "Event: #{@title} - #{@description} - #{@location} - #{@start_time} - #{@end_time} - #{@organizer_email} - #{@link}"
 end
 
-pp event1
-pp event1.tags
+event1
+
+pp event1.approve
+#pp event1.tags
 #pp event1.description
+#pp event1.send(:find_keywords)
+#pp event1.validate!
 
-#pp event1.validate!([@title, @description, @location, @start_time, @end_time, @organizer_email, @link])
-
+feed = Feed.new
 #pp feed.find(tags: ["rails"])
 #pp feed.by_organizer("ruby@london.com")
+feed.add(event1)
+feed.add(event2)
+#pp feed.pending_events
+#pp feed.all

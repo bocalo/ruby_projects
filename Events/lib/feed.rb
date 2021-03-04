@@ -19,10 +19,12 @@ class Feed
 
   def all
     @events
+    approve
   end
 
   def upcoming(n)
     sort_by(:start_time).take(n)
+    approve
   end
 
   def sort_by(field)
@@ -41,17 +43,10 @@ class Feed
 
   def by_organizer(email)
     @events.find { |el| el.organizer_email == email }
+    approve
   end
 
-  def self.pending_events
-    @status == "pending"
-  end
-
-  def self.approve
-    @status == true
-  end
-
-  def self.reject
-    @status == false
+  def pending_events
+    @events.find_all { |event| event.status == "pending" }
   end
 end

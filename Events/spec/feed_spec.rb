@@ -21,8 +21,12 @@ describe Feed do
       let(:event1) { Event.new("Programming", "some fastive events about programming scince", "Tambov", "10.02.2005", "12.02.2005", "tambov@fastive.ru", "google") }
 
       let(:event2) { Event.new("Ruby's Day", "meeting of the programmers in ruby ", "London", "19.05.2010", "21.05.2010", "ruby@london.com", "facebook") }
+      before do
+        event1.approve
+        event2.approve
+      end
 
-      it "returns all events added to the list" do
+      it "returns all events added to the list with helper method approve" do
         expect(feed.all).to eq([event1, event2])
       end
     end
@@ -43,8 +47,13 @@ describe Feed do
         Event.new("Day of Rails", "meeting people who loves rails",
                   "Riga", "10.08.2015", "15.08.2015", "rails@riga.com", "twitter")
       }
+      before do
+        event1.approve
+        event2.approve
+        event3.approve
+      end
 
-      it "returns all events sorted by start of events" do
+      it "returns all events sorted by start of events with status approved" do
         expect(feed.upcoming(5)).to eq([event3, event2, event1])
       end
     end
@@ -65,7 +74,13 @@ describe Feed do
         Event.new("Day of Rails", "meeting people who loves rails",
                   "Riga", "10.08.2015", "15.08.2015", "rails@riga.com", "twitter")
       }
-      it "returns the event only with called email" do
+      before do
+        event1.approve
+        event2.approve
+        event3.approve
+      end
+
+      it "returns the event only with called email and status approved" do
         expect(feed.by_organizer("ruby@london.com")).to eq(event2)
       end
     end

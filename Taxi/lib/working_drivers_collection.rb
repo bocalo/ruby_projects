@@ -1,0 +1,2 @@
+class WorkingDriversCollection
+end

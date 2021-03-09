@@ -7,6 +7,10 @@ class Car
     @number = number
   end
 
+  def to_s
+    "The car: #{model} - #{type} - #{number}"
+  end
+
   def can_take_passengers?(number)
     @number <= number
   end

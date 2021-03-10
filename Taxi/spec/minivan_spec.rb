@@ -1,4 +1,4 @@
-require './lib/minivan'
+require "./lib/minivan"
 
 describe Minivan do
   let(:minivan) { Minivan.new("Fiat", "minivan", "435BL") }

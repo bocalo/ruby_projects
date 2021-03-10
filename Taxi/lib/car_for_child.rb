@@ -1,4 +1,4 @@
-require_relative 'car'
+require_relative "car"
 
 class CarForChild < Car
 end

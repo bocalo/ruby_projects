@@ -1,4 +1,4 @@
-require './lib/driver'
+require "./lib/driver"
 
 describe Driver do
   let(:driver) { Driver.new("Bill Smith", "male", "2000", "5") }

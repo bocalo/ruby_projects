@@ -1,5 +1,5 @@
-require_relative 'car'
-require_relative 'driver'
+require_relative "car"
+require_relative "driver"
 
 class TaxiStation
   attr_reader :driver, :car, :status

@@ -1,4 +1,4 @@
-require_relative 'vehicle'
+require_relative "vehicle"
 
 class Truck < Car
   Max_Cargo = 20000

@@ -1,4 +1,4 @@
-require_relative 'vehicle'
+require_relative "vehicle"
 
 class Bus < Vehicle
   Max_Passengers = 30
@@ -7,5 +7,3 @@ class Bus < Vehicle
     "The bus: #{model} - #{type} - #{number}"
   end
 end
-
-

@@ -1,4 +1,4 @@
-require './lib/car'
+require "./lib/car"
 
 describe Car do
   let(:car) { Car.new("Mazda", "car", "125GH") }

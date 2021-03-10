@@ -1,4 +1,4 @@
-require './lib/truck'
+require "./lib/truck"
 
 describe Truck do
   let(:truck) { Truck.new("Volvo", "truck", "987FD") }

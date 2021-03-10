@@ -1,4 +1,4 @@
-require './lib/bus'
+require "./lib/bus"
 
 describe Bus do
   let(:bus) { Bus.new("Neoplan", "bus", "345FD") }

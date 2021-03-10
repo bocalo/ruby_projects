@@ -29,17 +29,14 @@ describe Vehicle do
     let(:truck) { Truck.new("Volvo", "truck", "854JF") }
 
     it "returns car if vehicle's type as car" do
-      Vehicle.for("Mazda", "car", "225GH")
-      expect(car.type).to eq("car")
+      expect(Vehicle.for("Mazda", "car", "225GH").type).to eq("car")
     end
     it "returns car if vehicle's model as 'Mazda'" do
-      Vehicle.for("Mazda", "car", "225GH")
-      expect(car.model).to eq("Mazda")
+      expect(Vehicle.for("Mazda", "car", "225GH").model).to eq("Mazda")
     end
 
     it "returns car if vehicle's number as '125GH'" do
-      Vehicle.for("Mazda", "car", "225GH")
-      expect(car.number).to eq("225GH")
+      expect(Vehicle.for("Mazda", "car", "225GH").number).to eq("225GH")
     end
   end
 end

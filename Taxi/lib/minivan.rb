@@ -1,4 +1,9 @@
-require_relative 'car'
+require_relative 'vehicle'
 
-class Minivan < Car
+class Minivan < Vehicle
+  Max_Passengers = 10
+  def to_s
+    "The minivan: #{model} - #{type} - #{number}"
+  end
 end
+

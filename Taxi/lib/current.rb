@@ -1,10 +1,10 @@
 class Current
   attr_reader :driver, :car, :status
 
-  def initialize(driver, car)
+  def initialize(driver, car, status)
     @driver = driver
     @car = car
-    @status = "idle"
+    @status = status
   end
 
   def to_s

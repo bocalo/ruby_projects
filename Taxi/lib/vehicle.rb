@@ -1,5 +1,4 @@
 class Vehicle
-  Max_Passengers = 3
   attr_reader :model, :type, :number
 
   def initialize(model, type, number)
@@ -13,18 +12,22 @@ class Vehicle
   end
 
   def can_take_passengers?(number)
-    Max_Passengers >= number
+    number <= max_passengers
+  end
+
+  def max_passengers
+    3
   end
 
   def self.for(model, type, number)
     if type == "car"
-      Car.new("Mazda", "car", "225GH")
+      Car.new(model, "car", number)
     elsif type == "minivan"
-      Minivan.new("Ford", "minivan", "589Lk")
+      Minivan.new(model, "minivan", number)
     elsif type == "bus"
-      Bus.new("Neoplan", "bus", "345FD")
+      Bus.new(model, "bus", number)
     elsif type == "truck"
-      Truck.new("Volvo", "truck", "854JF")
+      Truck.new(model, "truck", number)
     end
   end
 end

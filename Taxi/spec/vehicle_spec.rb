@@ -39,4 +39,16 @@ describe Vehicle do
       expect(Vehicle.for("Mazda", "car", "225GH").number).to eq("225GH")
     end
   end
+
+  describe "#can_take_passengers?" do
+    let(:car) { Car.new("Mazda", "car", "225GH") }
+    let(:minivan) { Minivan.new("Ford", "minivan", "589Lk") }
+    let(:bus) { Bus.new("Neoplan", "bus", "345FD") }
+
+    it "returns true if number of passengers less or equal of amount of places in the car" do
+      #expect(car.can_take_passengers?(3)).to eq(true)
+      #expect(minivan.can_take_passengers?(9)).to eq(true)
+      expect(bus.can_take_passengers?(9)).to eq(true)
+    end
+  end
 end

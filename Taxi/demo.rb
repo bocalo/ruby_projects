@@ -5,27 +5,47 @@ require "./lib/car"
 require "./lib/minivan"
 require "./lib/truck"
 require "./lib/current"
+require "./lib/order"
 
-driver = Driver.new("Bill Smith", "male", "2000", "5")
-vehicle = Vehicle.new("Scoda", "car", "325GH")
-current = Current.new("Pall Dell", "Fiat")
-pp current.to_s
-
-#pp vehicle.type
-car = Car.new("Mazda", "car", "125GH")
+driver1 = Driver.new("Bill Smith", "male", "2000", "5")
+driver2 = Driver.new("Anna Cruz", "female", "2000", "4")
+car1 = Car.new("Scoda", "car", "325GH")
+car2 = Car.new("Toyota", "car", "125GH")
 minivan = Minivan.new("Fiat", "minivan", "435BL")
 bus = Bus.new("Neoplan", "bus", "345FD")
 truck = Truck.new("Volvo", "truck", "987FD")
+#car = Car.new(model, type, number)
+#pp car
+vehicle = Vehicle.new("Scoda", "car", "325GH")
+current1 = Current.new(driver1, car1, "busy")
+current2 = Current.new(driver2, car2, "idle")
+
+order = Order.new("08.02.21", 10, "Minsk", "Kiev", minivan)
+pp order
+
+#pp current
+#pp current.to_s
+
+#pp vehicle.type
+car = Car.new("Scoda", "car", "325GH")
+#pp car
+
 #pp truck.to_s
 #pp minivan.to_s
 #pp vehicle.to_s
-#pp Car.for("Honda", "car", "225GH")
+#pp Vehicle.for("Honda", "car", "225GH")
 #pp Car.for("Scoda", "car", "325GH")
 
 #pp bus.to_s
 #pp bus
-#pp bus.can_take_passengers?(100)
+#pp bus.can_take_passengers?(23)
+#pp minivan.can_take_passengers?(5)
 #pp car.to_s
-#pp vehicle.can_take_passengers?(10)
+#pp vehicle.can_take_passengers?(3)
+#pp bus.can_take_passengers?(130)
+#pp vehicle.can_take_passengers?(3)
+
+#pp bus.max_passengers(130)
+#pp minivan.max_passengers(10)
 
 #pp driver.to_s

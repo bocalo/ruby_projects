@@ -17,6 +17,5 @@ class Current
 
   def busy
     @status = "busy" 
-    nil
   end
 end

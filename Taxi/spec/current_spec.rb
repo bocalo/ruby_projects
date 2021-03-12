@@ -1,11 +1,13 @@
 require "./lib/current"
 
 describe Current do
-  let(:current) { Current.new("Pall Dell", "Fiat") }
+  let(:driver) { Driver.new("Tim Barks", "male", "2010", "5") }
+  let(:car) { Car.new("Opel", "car", "425GH") }
+  let(:current) { Current.new(driver, car) }
 
   describe "#to_s" do
     it "returns string with driver and car at the moment" do
-      expect(current.to_s).to eq("On the current moment: Pall Dell - Fiat - idle")
+      expect(current.to_s).to eq("On the current moment: The driver: Tim Barks - male - 2010 - 5 - The car: Opel - car - 425GH - idle")
     end
   end
 
@@ -15,7 +17,8 @@ describe Current do
     let(:current1) { Current.new(driver1, car1) }
 
     it "returns driver with status busy" do
-      expect(current1.idle).to eq("idle")
+      current1.idle
+      expect(current1.status).to eq("idle")
     end
   end
 

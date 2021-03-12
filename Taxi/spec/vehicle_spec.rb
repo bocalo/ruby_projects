@@ -10,18 +10,6 @@ describe Vehicle do
     end
   end
 
-  describe "#can_take_passengers?" do
-    context "we have 3 passengers" do
-      it "returns true if the vehicle can take 3 passengers" do
-        expect(vehicle.can_take_passengers?(3)).to eq(true)
-      end
-
-      it "returns false if the vehicle can't take 3 passengers" do
-        expect(vehicle.can_take_passengers?(10)).to eq(false)
-      end
-    end
-  end
-
   describe "::for" do
     let(:car) { Car.new("Mazda", "car", "225GH") }
     let(:minivan) { Minivan.new("Ford", "minivan", "589Lk") }
@@ -41,14 +29,19 @@ describe Vehicle do
   end
 
   describe "#can_take_passengers?" do
-    let(:car) { Car.new("Mazda", "car", "225GH") }
-    let(:minivan) { Minivan.new("Ford", "minivan", "589Lk") }
-    let(:bus) { Bus.new("Neoplan", "bus", "345FD") }
+    context "one bus" do
+      let(:bus) { Bus.new("Neoplan", "bus", "345FD") }
 
-    it "returns true if number of passengers less or equal of amount of places in the car" do
-      #expect(car.can_take_passengers?(3)).to eq(true)
-      #expect(minivan.can_take_passengers?(9)).to eq(true)
-      expect(bus.can_take_passengers?(9)).to eq(true)
+      it "returns true if number of passengers less or equal of amount of places in the car" do
+        expect(bus.can_take_passengers?(9)).to eq(true)
+      end
+    end
+    context "one minivan" do
+      let(:minivan) { Minivan.new("Ford", "minivan", "589Lk") }
+
+      it "returns false if number of passengers more than amount of places in the car" do
+        expect(minivan.can_take_passengers?(90)).to eq(false)
+      end
     end
   end
 end

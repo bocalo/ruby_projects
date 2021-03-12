@@ -17,14 +17,17 @@ truck = Truck.new("Volvo", "truck", "987FD")
 #car = Car.new(model, type, number)
 #pp car
 vehicle = Vehicle.new("Scoda", "car", "325GH")
-current1 = Current.new(driver1, car1, "busy")
-current2 = Current.new(driver2, car2, "idle")
+current1 = Current.new(driver1, car1)
+current2 = Current.new(driver2, car2)
 
 order = Order.new("08.02.21", 10, "Minsk", "Kiev", minivan)
-pp order
+#pp order
 
-#pp current
+# pp current1.idle
+pp current2.busy
+pp current2.status
 #pp current.to_s
+#pp current1.status
 
 #pp vehicle.type
 car = Car.new("Scoda", "car", "325GH")

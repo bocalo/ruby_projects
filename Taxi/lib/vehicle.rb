@@ -16,7 +16,7 @@ class Vehicle
   end
 
   def max_passengers
-    3
+    raise "Should be implemented in child class"
   end
 
   def self.for(model, type, number)

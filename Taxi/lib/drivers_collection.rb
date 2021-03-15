@@ -22,11 +22,11 @@ class DriversCollection
     @drivers << driver
   end
 
-  def find(driver)
-    @drivers.select { |el| el.id == driver.id }
+  def find(id)
+    @drivers.select { |el| el.id == id }
   end
 
-  def remove(driver)
-    @drivers.delete_if { |el| el.id == driver.id }
+  def remove(id)
+    @drivers.delete_if { |el| el.id == id }
   end
 end

@@ -1,4 +1,4 @@
-class Current
+class CurrentTaxi
   attr_reader :driver, :car, :status
   attr_accessor :id
 

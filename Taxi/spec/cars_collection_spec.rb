@@ -3,25 +3,6 @@ require "./lib/cars_collection"
 describe CarsCollection do
   subject(:cc) { CarsCollection.new }
 
-  # describe "#all" do
-  #   context "two cars" do
-  #     before do
-  #       cc.add(car)
-  #       cc.add(car1)
-  #     end
-  #     let(:car) { Car.new("Opel", "car", "425GH") }
-  #     let(:car1) { Car.new("Scoda", "car", "325GH") }
-
-  #     it "returns all cars" do
-  #       expect(cc.all.first.to_s).to eq("The car: Opel - car - 425GH")
-  #     end
-
-  #     it "returns cars added in array with id increasing by one" do
-  #       expect(cc.all).to eq([car.id, car1.id])
-  #     end
-  #   end
-  # end
-
   describe "#all" do
     context "two cars" do
       before do

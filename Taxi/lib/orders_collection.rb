@@ -21,11 +21,11 @@ class OrdersCollection
     @orders << order
   end
 
-  def find(order)
-    @orders.select { |el| el.id == order.id }
+  def find(id)
+    @orders.select { |el| el.id == id }
   end
 
-  def remove(order)
-    @orders.delete_if { |el| el.id == order.id }
+  def remove(id)
+    @orders.delete_if { |el| el.id == id }
   end
 end

@@ -22,11 +22,11 @@ class CarsCollection
     @cars << car
   end
 
-  def find(car)
-    @cars.select { |el| el.id == car.id }
+  def find(id)
+    @cars.select { |el| el.id == id }
   end
 
-  def remove(car)
-    @cars.delete_if { |el| el.id == car.id }
+  def remove(id)
+    @cars.delete_if { |el| el.id == id }
   end
 end

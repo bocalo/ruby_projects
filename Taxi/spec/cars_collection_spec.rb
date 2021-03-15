@@ -3,6 +3,25 @@ require "./lib/cars_collection"
 describe CarsCollection do
   subject(:cc) { CarsCollection.new }
 
+  # describe "#all" do
+  #   context "two cars" do
+  #     before do
+  #       cc.add(car)
+  #       cc.add(car1)
+  #     end
+  #     let(:car) { Car.new("Opel", "car", "425GH") }
+  #     let(:car1) { Car.new("Scoda", "car", "325GH") }
+
+  #     it "returns all cars" do
+  #       expect(cc.all.first.to_s).to eq("The car: Opel - car - 425GH")
+  #     end
+
+  #     it "returns cars added in array with id increasing by one" do
+  #       expect(cc.all).to eq([car.id, car1.id])
+  #     end
+  #   end
+  # end
+
   describe "#all" do
     context "two cars" do
       before do
@@ -14,6 +33,19 @@ describe CarsCollection do
 
       it "returns all cars" do
         expect(cc.all.first.to_s).to eq("The car: Opel - car - 425GH")
+      end
+    end
+
+    context "two cars" do
+      before do
+        cc.add(car)
+        cc.add(car1)
+      end
+      let(:car) { Car.new("Opel", "car", "425GH") }
+      let(:car1) { Car.new("Scoda", "car", "325GH") }
+
+      it "returns cars added in array with id increasing by one" do
+        expect(cc.all).to eq([car, car1])
       end
     end
   end
@@ -49,7 +81,7 @@ describe CarsCollection do
       let(:car1) { Car.new("Scoda", "car", "325GH") }
       let(:car2) { Car.new("Toyota", "car", "125GH") }
       it "returns the car what you need" do
-        expect(cc.find(car2)).to eq([car2])
+        expect(cc.find(2)).to eq([car1])
       end
     end
   end
@@ -60,12 +92,13 @@ describe CarsCollection do
         cc.add(car1)
         cc.add(car2)
         cc.add(car3)
+        cc.remove(2)
       end
       let(:car1) { Car.new("Scoda", "car", "325GH") }
       let(:car2) { Car.new("Toyota", "car", "125GH") }
       let(:car3) { Car.new("Seat", "car", "825GH") }
       it "delete one car what you need to remove" do
-        expect(cc.remove(car2)).to eq([car1, car3])
+        expect(cc.all).to eq([car1, car3])
       end
     end
   end

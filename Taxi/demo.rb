@@ -7,10 +7,36 @@ require "./lib/truck"
 require "./lib/current"
 require "./lib/order"
 require "./lib/cars_collection"
+require "./lib/drivers_collection"
+require "./lib/orders_collection"
+require "./lib/working_drivers_collection"
 
-driver = Driver.new("Tim Barks", "male", "2010", "5")
-driver1 = Driver.new("Bill Smith", "male", "2000", "5")
-driver2 = Driver.new("Anna Cruz", "female", "2000", "4")
+# current1 = Current.new(driver1, car1)
+# current2 = Current.new(driver2, car2)
+
+# wd = WorkingDriversCollection.new
+
+# order1 = Order.new("08.10.20", 3, "Minsk", "Kiev", "car")
+# order2 = Order.new("18.05.20", 10, "Tambov", "Kursk", "minivan")
+# order3 = Order.new("11.12.20", 25, "Adler", "Sochi", "bus")
+
+# oc = OrdersCollection.new
+# oc.add(order1)
+# oc.add(order2)
+# oc.add(order3)
+# oc.find(order2)
+# oc.remove(order2)
+
+# driver = Driver.new("Tim Barks", "male", "2010", "5")
+# driver1 = Driver.new("Bill Smith", "male", "2000", "5")
+# driver2 = Driver.new("Anna Cruz", "female", "2000", "4")
+
+# dc = DriversCollection.new
+# dc.add(driver)
+# dc.add(driver1)
+# dc.add(driver2)
+#pp dc.find(driver1)
+#pp dc.remove(driver1)
 
 car = Car.new("Opel", "car", "425GH")
 car1 = Car.new("Scoda", "car", "325GH")
@@ -28,16 +54,16 @@ cc.add(car2)
 # cc.find(car3)
 #pp cc.remove(car3)
 #pp cc.all
-pp cc.find(car1)
-#car = Car.new(model, type, number)
-#pp car
+pp cc.find(2)
+# car = Car.new(model, type, number)
+# pp car
 vehicle = Vehicle.new("Scoda", "car", "325GH")
-current = Current.new(driver, car)
+#current = Current.new(driver, car)
 #pp current.to_s
-current1 = Current.new(driver1, car1)
-current2 = Current.new(driver2, car2)
+# current1 = Current.new(driver1, car1)
+# current2 = Current.new(driver2, car2)
 
-order = Order.new("08.02.21", 10, "Minsk", "Kiev", minivan)
+#order = Order.new("08.02.21", 10, "Minsk", "Kiev", minivan)
 #pp order.to_s
 
 # pp current1.idle

@@ -1,14 +1,24 @@
+require_relative 'order'
+
 class OrdersCollection
+  attr_reader :orders
+
   def initialize
-    @orders.each { |order| order }
+    @orders = []
   end
 
-  def find_order
+  def add(order)
+    @orders << order
   end
 
-  def add_order
+  def all
+    @orders
   end
 
-  def remove_order
+  def find(order)
+    
+  end
+
+  def remove(order)
   end
 end

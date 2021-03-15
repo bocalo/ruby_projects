@@ -1,10 +1,12 @@
 class Vehicle
   attr_reader :model, :type, :number
+  attr_accessor :id
 
   def initialize(model, type, number)
     @model = model
     @type = type
     @number = number
+    @id = 0
   end
 
   def to_s

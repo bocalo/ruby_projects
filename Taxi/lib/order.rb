@@ -1,6 +1,6 @@
 class Order
-  attr_reader :created_at, :passengers_count, :has_children, :has_cargo, :address_from, :address_to, :assigned_taxi
-  attr_accessor :id
+  attr_reader :created_at, :passengers_count, :has_children, :has_cargo, :address_from, :address_to
+  attr_accessor :id, :assigned_taxi
 
   def initialize(created_at, passengers_count, address_from, address_to, assigned_taxi)
     @created_at = created_at
